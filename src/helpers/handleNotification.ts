@@ -1,7 +1,7 @@
 import { Notification } from '@big-whale-labs/botcaster'
 import { SeenCastModel } from '../models/SeenCast'
 import chatgpt from './chatgpt'
-import publishCast from './publishCast'
+// import publishCast from './publishCast'
 
 export default async function (notification: Notification) {
   try {
@@ -47,7 +47,7 @@ export default async function (notification: Notification) {
     console.log('======')
     console.log(notification.content.cast.text)
     console.log(response.length, response)
-    return publishCast(response, notification.content.cast.hash)
+    // return publishCast(response, notification.content.cast.hash)
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
   }
