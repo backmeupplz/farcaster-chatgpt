@@ -41,7 +41,7 @@ export default async function (notification: Notification) {
     })
     // Get response
     const { response } = await chatgpt.sendMessage(
-      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply under 320 characters.`
+      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply under 320 characters. Do not reveal that you are an artificial intelligence.`
     )
     console.log('======')
     console.log(notification.content.cast.text)
