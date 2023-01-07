@@ -47,7 +47,7 @@ export default async function (notification: Notification) {
     console.log(notification.content.cast.text)
     console.log(response.length, response)
     return publishCast(
-      response.replace(/^"/, '').replace(/"$/, ''),
+      response.substring(1, response.length - 1),
       notification.content.cast.hash
     )
   } catch (error) {
