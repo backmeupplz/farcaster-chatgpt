@@ -5,4 +5,5 @@ export default new ChatGPTAPIBrowser({
   email: env.OPEN_AI_USERNAME,
   password: env.OPEN_AI_PASSWORD,
   markdown: false,
+  captchaToken: env.TWO_CAPTCHA_TOKEN,
 })

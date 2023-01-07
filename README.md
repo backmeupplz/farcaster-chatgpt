@@ -20,5 +20,6 @@ And you should be good to go! Feel free to fork and submit pull requests.
 | `FARCASTER_MNEMONIC` | Mnemonic for the bot's account |
 | `OPEN_AI_USERNAME`   | OpenAI API username            |
 | `OPEN_AI_PASSWORD`   | OpenAI API password            |
+| `TWO_CAPTCHA_TOKEN`  | 2Captcha API token             |
 
 Also, please, consider looking at `.env.sample`.

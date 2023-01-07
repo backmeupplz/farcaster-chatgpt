@@ -12,4 +12,5 @@ export default cleanEnv(process.env, {
   FARCASTER_MNEMONIC: str(),
   OPEN_AI_USERNAME: str(),
   OPEN_AI_PASSWORD: str(),
+  TWO_CAPTCHA_TOKEN: str(),
 })
