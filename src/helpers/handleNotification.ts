@@ -1,12 +1,11 @@
 import { Notification } from '@big-whale-labs/botcaster'
 import { SeenCastModel } from '../models/SeenCast'
 import chatgpt from './chatgpt'
-// import publishCast from './publishCast'
+import publishCast from './publishCast'
 
 export default async function (notification: Notification) {
   try {
     // Check if mention
-    console.log(notification.type)
     if (
       notification.type !== 'cast-mention' &&
       notification.type !== 'cast-reply'
@@ -42,12 +41,15 @@ export default async function (notification: Notification) {
     })
     // Get response
     const { response } = await chatgpt.sendMessage(
-      `Write a funny and ironic reply to the following message: "${notification.content.cast.text}". Keep the reply under 320 characters.`
+      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply under 320 characters.`
     )
     console.log('======')
     console.log(notification.content.cast.text)
     console.log(response.length, response)
-    // return publishCast(response, notification.content.cast.hash)
+    return publishCast(
+      response.replace(/^"/, '').replace(/"$/, ''),
+      notification.content.cast.hash
+    )
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
   }
