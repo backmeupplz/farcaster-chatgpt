@@ -6,7 +6,11 @@ import publishCast from './publishCast'
 export default async function (notification: Notification) {
   try {
     // Check if mention
-    if (notification.type !== 'cast-mention') {
+    console.log(notification.type)
+    if (
+      notification.type !== 'cast-mention' &&
+      notification.type !== 'cast-reply'
+    ) {
       return
     }
     // Check if it's a self-notification
