@@ -92,10 +92,13 @@ export default async function (notification: Notification) {
     console.log(notification.content.cast.text)
     console.log(response.length, response)
     await delay(30 + getRandomInt(30))
-    return publishCast(
-      response.substring(1).substring(0, response.length - 3),
-      notification.content.cast.hash
-    )
+    if (response.startsWith('"')) {
+      response = response.substring(1)
+    }
+    if (response.endsWith('"')) {
+      response = response.substring(0, response.length - 1)
+    }
+    return publishCast(response, notification.content.cast.hash)
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
   }
