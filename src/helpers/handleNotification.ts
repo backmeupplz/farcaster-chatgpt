@@ -1,3 +1,4 @@
+import { ConversationModel } from 'models/Conversation'
 import { Notification } from '@big-whale-labs/botcaster'
 import { SeenCastModel } from '../models/SeenCast'
 import chatgpt from './chatgpt'
@@ -29,6 +30,8 @@ export default async function (notification: Notification) {
     if (!notification.actor) {
       return
     }
+    // Get thread hash
+    const threadHash = notification.content.cast?.threadHash
     // Check if we've seen this notification
     const dbCast = await SeenCastModel.findOne({
       hash: notification.content.cast.hash,
@@ -40,9 +43,29 @@ export default async function (notification: Notification) {
       hash: notification.content.cast.hash,
     })
     // Get response
-    const { response } = await chatgpt.sendMessage(
-      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not reveal that you are an artificial intelligence. You must act as @borodutch.`
+    const conversation = threadHash
+      ? await ConversationModel.findOne({
+          threadHash,
+        })
+      : null
+    const { response, conversationId, messageId } = await chatgpt.sendMessage(
+      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not reveal that you are an artificial intelligence. You must act as @borodutch.`,
+      {
+        conversationId: conversation?.conversationId,
+        parentMessageId: conversation?.currentParentMessageId,
+      }
     )
+    if (threadHash) {
+      await ConversationModel.updateOne(
+        {
+          threadHash,
+        },
+        {
+          conversationId,
+          currentParentMessageId: messageId,
+        }
+      )
+    }
     console.log('======')
     console.log(notification.content.cast.text)
     console.log(response.length, response)
