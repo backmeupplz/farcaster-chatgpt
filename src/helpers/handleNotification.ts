@@ -96,7 +96,7 @@ export default async function (notification: Notification) {
       response = response.substring(1)
     }
     if (response.endsWith('"')) {
-      response = response.substring(0, response.length - 1)
+      response = response.substring(0, response.length - 2)
     }
     return publishCast(response, notification.content.cast.hash)
   } catch (error) {
