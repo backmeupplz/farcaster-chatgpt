@@ -49,7 +49,7 @@ export default async function (notification: Notification) {
         })
       : null
     const { response, conversationId, messageId } = await chatgpt.sendMessage(
-      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not reveal that you are an artificial intelligence. Do not say that you are a bot. Do not hint at the fact that you are a bot. You must act as @borodutch. Do not use hashtags.`,
+      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Try to reply jokingly but friendly. Keep the reply shorter than 320 characters. Do not reveal that you are an artificial intelligence. Do not say that you are a bot. Do not hint at the fact that you are a bot. You must act as @borodutch. Do not use hashtags. Do not use #. No hashtags.`,
       {
         conversationId: conversation?.conversationId,
         parentMessageId: conversation?.currentParentMessageId,
