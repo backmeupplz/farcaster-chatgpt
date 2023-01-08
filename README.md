@@ -14,12 +14,13 @@ And you should be good to go! Feel free to fork and submit pull requests.
 
 ## Environment variables
 
-| Name                 | Description                    |
-| -------------------- | ------------------------------ |
-| `MONGO`              | URL of the mongo database      |
-| `FARCASTER_MNEMONIC` | Mnemonic for the bot's account |
-| `OPEN_AI_USERNAME`   | OpenAI API username            |
-| `OPEN_AI_PASSWORD`   | OpenAI API password            |
-| `TWO_CAPTCHA_TOKEN`  | 2Captcha API token             |
+| Name                 | Description                          |
+| -------------------- | ------------------------------------ |
+| `MONGO`              | URL of the mongo database            |
+| `FARCASTER_MNEMONIC` | Mnemonic for the bot's account       |
+| `OPEN_AI_USERNAME`   | OpenAI API username                  |
+| `OPEN_AI_PASSWORD`   | OpenAI API password                  |
+| `TWO_CAPTCHA_TOKEN`  | 2Captcha API token                   |
+| `PUPPETEER`          | Puppeteer executable path (optional) |
 
 Also, please, consider looking at `.env.sample`.

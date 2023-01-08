@@ -6,4 +6,5 @@ export default new ChatGPTAPIBrowser({
   password: env.OPEN_AI_PASSWORD,
   markdown: false,
   captchaToken: env.TWO_CAPTCHA_TOKEN,
+  executablePath: env.PUPPETEER ? env.PUPPETEER : undefined,
 })

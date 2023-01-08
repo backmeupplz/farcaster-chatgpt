@@ -13,4 +13,5 @@ export default cleanEnv(process.env, {
   OPEN_AI_USERNAME: str(),
   OPEN_AI_PASSWORD: str(),
   TWO_CAPTCHA_TOKEN: str(),
+  PUPPETEER: str({ default: '' }),
 })
