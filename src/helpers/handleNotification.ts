@@ -1,4 +1,4 @@
-import { ConversationModel } from 'models/Conversation'
+import { ConversationModel } from '../models/Conversation'
 import { Notification } from '@big-whale-labs/botcaster'
 import { SeenCastModel } from '../models/SeenCast'
 import chatgpt from './chatgpt'
