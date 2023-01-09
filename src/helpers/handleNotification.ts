@@ -4,14 +4,6 @@ import { SeenCastModel } from '../models/SeenCast'
 import chatgpt from './chatgpt'
 import publishCast from './publishCast'
 
-function delay(s: number) {
-  return new Promise((resolve) => setTimeout(resolve, s * 1000))
-}
-
-function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max)
-}
-
 export default async function (notification: Notification) {
   try {
     // Check if mention
@@ -91,7 +83,7 @@ export default async function (notification: Notification) {
     console.log('======')
     console.log(notification.content.cast.text)
     console.log(response.length, response)
-    await delay(30 + getRandomInt(30))
+
     response = response.trim()
     if (response.startsWith('"')) {
       response = response.substring(1)
