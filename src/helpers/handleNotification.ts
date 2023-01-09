@@ -62,6 +62,9 @@ export default async function (notification: Notification) {
     let numberOfTries = 0
     while (response.length > 320 && numberOfTries < 10) {
       if (numberOfTries > 0) {
+        console.log(
+          `Try #${numberOfTries + 1} for "${notification.content.cast.text}"`
+        )
         await delay(5)
       }
       numberOfTries++
