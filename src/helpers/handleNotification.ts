@@ -4,6 +4,10 @@ import { SeenCastModel } from '../models/SeenCast'
 import chatgpt from './chatgpt'
 import publishCast from './publishCast'
 
+function delay(s: number) {
+  return new Promise((resolve) => setTimeout(resolve, s * 1000))
+}
+
 export default async function (notification: Notification) {
   try {
     // Check if mention
@@ -57,6 +61,9 @@ export default async function (notification: Notification) {
     )
     let numberOfTries = 0
     while (response.length > 320 && numberOfTries < 10) {
+      if (numberOfTries > 0) {
+        await delay(5)
+      }
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
         `Try again but keep reply under 320 characters and without hashtags.`,
