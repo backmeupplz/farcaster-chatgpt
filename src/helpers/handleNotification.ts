@@ -56,7 +56,7 @@ export default async function (notification: Notification) {
       }
     )
     let numberOfTries = 0
-    while (response.length > 320 && numberOfTries < 3) {
+    while (response.length > 320 && numberOfTries < 10) {
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
         `Try again but keep reply under 320 characters and without hashtags.`,
