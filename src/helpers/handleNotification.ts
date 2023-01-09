@@ -22,7 +22,7 @@ export default async function (notification: Notification) {
       return
     }
     // Check if it's a self-notification
-    if (notification.actor?.username?.toLowerCase() === 'borodutch') {
+    if (notification.actor?.username?.toLowerCase() === 'chatgpt') {
       return
     }
     // Check if it has text
@@ -57,7 +57,7 @@ export default async function (notification: Notification) {
         })
       : null
     let { response, conversationId, messageId } = await chatgpt.sendMessage(
-      `Write a funny and knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not reveal that you are an artificial intelligence. Do not say that you are a bot. Do not hint at the fact that you are a bot. You must act as @borodutch. Do not use hashtags. Do not use #. No hashtags.`,
+      `Write a knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not use hashtags.`,
       {
         conversationId: conversation?.conversationId,
         parentMessageId: conversation?.currentParentMessageId,
