@@ -2,7 +2,7 @@ import { ConversationModel } from '../models/Conversation'
 import { Notification } from '@big-whale-labs/botcaster'
 import { SeenCastModel } from '../models/SeenCast'
 import chatgpt from './chatgpt'
-// import publishCast from './publishCast'
+import publishCast from './publishCast'
 
 export default async function (notification: Notification) {
   try {
@@ -95,7 +95,7 @@ export default async function (notification: Notification) {
     if (response.endsWith('"')) {
       response = response.substring(0, response.length - 1)
     }
-    // return publishCast(response, notification.content.cast.hash)
+    return publishCast(response, notification.content.cast.hash)
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
   }
