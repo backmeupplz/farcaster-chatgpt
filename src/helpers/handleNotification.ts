@@ -65,7 +65,7 @@ export default async function (notification: Notification) {
         console.log(
           `Try #${numberOfTries + 1} for "${notification.content.cast.text}"`
         )
-        await delay(5)
+        await delay(15)
       }
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
