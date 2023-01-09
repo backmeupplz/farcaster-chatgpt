@@ -95,7 +95,9 @@ export default async function (notification: Notification) {
     if (response.endsWith('"')) {
       response = response.substring(0, response.length - 1)
     }
-    return publishCast(response, notification.content.cast.hash)
+    if (response.length <= 320) {
+      return publishCast(response, notification.content.cast.hash)
+    }
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
   }
