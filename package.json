@@ -18,7 +18,7 @@
     "@big-whale-labs/botcaster": "^0.0.15",
     "@standard-crypto/farcaster-js": "^5.4.0",
     "@typegoose/typegoose": "^10.0.0",
-    "chatgpt": "^3.3.11",
+    "chatgpt": "^3.3.12",
     "dotenv": "^16.0.3",
     "envalid": "^7.3.1",
     "ethers": "^5.7.2",
