@@ -9,6 +9,7 @@ function delay(s: number) {
 }
 
 export default async function (notification: Notification) {
+  let castHash: string | undefined
   try {
     // Check if mention
     if (
@@ -30,6 +31,7 @@ export default async function (notification: Notification) {
     if (!notification.content.cast?.hash) {
       return
     }
+    castHash = notification.content.cast.hash
     // Check if there is an actor
     if (!notification.actor) {
       return
@@ -112,5 +114,13 @@ export default async function (notification: Notification) {
     }
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
+    if (castHash) {
+      return publishCast(
+        `So sorry, I experienced an error, try again later: ${
+          error instanceof Error ? error.message : error
+        }`.substring(0, 320),
+        castHash
+      )
+    }
   }
 }
