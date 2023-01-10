@@ -61,7 +61,7 @@ export default async function (notification: Notification) {
       }
     )
     let numberOfTries = 0
-    while (response.length > 320 && numberOfTries < 10) {
+    while ((!response || response.length > 320) && numberOfTries < 10) {
       if (numberOfTries > 0) {
         console.log('======')
         console.log(response.length, response)
