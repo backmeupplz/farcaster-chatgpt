@@ -73,7 +73,7 @@ export default async function (notification: Notification) {
       }
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
-        `Try again but keep reply under 320 characters and without hashtags.`,
+        `Try again but. Keep reply under 320 characters and without hashtags.`,
         {
           conversationId,
           parentMessageId: messageId,
@@ -111,6 +111,11 @@ export default async function (notification: Notification) {
     }
     if (response.length <= 320) {
       return publishCast(response, notification.content.cast.hash)
+    } else {
+      return publishCast(
+        'I tried 10 times to generate a reply under 320 characters but failed. So sorry, try again later!',
+        castHash
+      )
     }
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
