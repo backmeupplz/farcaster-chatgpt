@@ -37,7 +37,8 @@ export default async function (notification: Notification) {
       return
     }
     // Get thread hash
-    const threadHash = notification.content.cast?.threadHash
+    const threadHash =
+      notification.content.cast?.threadHash || notification.content.cast.hash
     // Check if we've seen this notification
     const dbCast = await SeenCastModel.findOne({
       hash: notification.content.cast.hash,
@@ -49,11 +50,9 @@ export default async function (notification: Notification) {
       hash: notification.content.cast.hash,
     })
     // Get response
-    const conversation = threadHash
-      ? await ConversationModel.findOne({
-          threadHash,
-        })
-      : null
+    const conversation = await ConversationModel.findOne({
+      threadHash,
+    })
     let { response, conversationId, messageId } = await chatgpt.sendMessage(
       `Write a knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not use hashtags.`,
       {
@@ -84,20 +83,18 @@ export default async function (notification: Notification) {
       messageId = newResponse.messageId
     }
     console.log(response, conversationId, messageId)
-    if (threadHash) {
-      await ConversationModel.updateOne(
-        {
-          threadHash,
-        },
-        {
-          conversationId,
-          currentParentMessageId: messageId,
-        },
-        {
-          upsert: true,
-        }
-      )
-    }
+    await ConversationModel.updateOne(
+      {
+        threadHash,
+      },
+      {
+        conversationId,
+        currentParentMessageId: messageId,
+      },
+      {
+        upsert: true,
+      }
+    )
     console.log('======')
     console.log(notification.content.cast.text)
     console.log(response.length, response)
