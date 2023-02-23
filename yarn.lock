@@ -868,13 +868,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/botcaster@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@big-whale-labs/botcaster@npm:0.0.15"
+"@big-whale-labs/botcaster@npm:^0.0.17":
+  version: 0.0.17
+  resolution: "@big-whale-labs/botcaster@npm:0.0.17"
   dependencies:
     axios: ^1.2.1
     node-persist: ^3.1.0
-  checksum: 2533da5e93887339741618b677d23303b906dff4213e4621bd01f31857330041519700761ebecf2a9c4d1ea449b61c4737068ccfe0ac1717f46f49db2745f2db
+  checksum: cb14b9bc60863499b0b2b29a3c13307bc62ce149173a97434c067b20a131f7d6804f9d067994a4f1ae7ffc379e13980c505149638326cecf034b1191dae046d4
   languageName: node
   linkType: hard
 
@@ -1349,14 +1349,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@standard-crypto/farcaster-js@npm:^5.4.0":
-  version: 5.4.0
-  resolution: "@standard-crypto/farcaster-js@npm:5.4.0"
+"@standard-crypto/farcaster-js@npm:^5.5.2":
+  version: 5.5.2
+  resolution: "@standard-crypto/farcaster-js@npm:5.5.2"
   dependencies:
-    axios: ~1.1.3
+    axios: ~1.3.3
     canonicalize: ^1.0.8
     ethers: ^5.7.1
-  checksum: ce97cae91bfcc37882c9c99266475c8d8117a55396c00a8c2b6d18c286926905d4f17b04e9259f96704e89a5ce03d232bc4fc732ab4292c128cbcb342dab533d
+  checksum: f15bbc161471fab740671e21e89291670bdadd24e1968094a1f877a420a477e9f6a474256ba7540548aa21792814bffb061b5f349917b6067d81014d3b192ab5
   languageName: node
   linkType: hard
 
@@ -1722,14 +1722,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:~1.1.3":
-  version: 1.1.3
-  resolution: "axios@npm:1.1.3"
+"axios@npm:~1.3.3":
+  version: 1.3.4
+  resolution: "axios@npm:1.3.4"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: cab3b17bf6092c9387f7023d699db093cfa23650b56c4422cd474d124b78b2e3b5a520f932c330664a58ab85b867b1c25a95cace475ef72d236888c852b84e6d
+  checksum: 7440edefcf8498bc3cdf39de00443e8101f249972c83b739c6e880d9d669fea9486372dbe8739e88b3bf8bb1ad15f6106693f206f078f4516fe8fd47b1c3093c
   languageName: node
   linkType: hard
 
@@ -2637,8 +2637,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "farcaster-chatgpt@workspace:."
   dependencies:
-    "@big-whale-labs/botcaster": ^0.0.15
-    "@standard-crypto/farcaster-js": ^5.4.0
+    "@big-whale-labs/botcaster": ^0.0.17
+    "@standard-crypto/farcaster-js": ^5.5.2
     "@typegoose/typegoose": ^10.0.0
     "@types/node": ^18.11.18
     "@typescript-eslint/eslint-plugin": ^5.48.0
