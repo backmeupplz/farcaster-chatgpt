@@ -16,28 +16,27 @@
   },
   "dependencies": {
     "@big-whale-labs/botcaster": "^0.0.17",
-    "@standard-crypto/farcaster-js": "^5.5.2",
-    "@typegoose/typegoose": "^10.0.0",
-    "chatgpt": "3.5.2",
+    "@standard-crypto/farcaster-js": "^5.5.3",
+    "@typegoose/typegoose": "^10.3.0",
+    "chatgpt": "^5.0.8",
     "dotenv": "^16.0.3",
     "envalid": "^7.3.1",
     "ethers": "^5.7.2",
-    "mongoose": "^6.8.3",
-    "puppeteer": "^19.4.1"
+    "mongoose": "^7.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.26.0",
+    "@types/node": "^18.14.6",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.4",
     "tsc-watch": "^6.0.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   },
   "packageManager": "yarn@3.3.1"
 }

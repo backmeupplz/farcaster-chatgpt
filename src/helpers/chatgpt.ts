@@ -1,10 +1,6 @@
-import { ChatGPTAPIBrowser } from 'chatgpt'
+import { ChatGPTAPI } from 'chatgpt'
 import env from './env'
 
-export default new ChatGPTAPIBrowser({
-  email: env.OPEN_AI_USERNAME,
-  password: env.OPEN_AI_PASSWORD,
-  markdown: false,
-  captchaToken: env.TWO_CAPTCHA_TOKEN,
-  executablePath: env.PUPPETEER ? env.PUPPETEER : undefined,
+export default new ChatGPTAPI({
+  apiKey: env.OPEN_AI_API_KEY,
 })
