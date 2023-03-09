@@ -97,12 +97,6 @@ export default async function (notification: Notification) {
     console.log(response.length, response)
 
     response = response.trim()
-    if (response.startsWith('"')) {
-      response = response.substring(1)
-    }
-    if (response.endsWith('"')) {
-      response = response.substring(0, response.length - 1)
-    }
     if (response.length <= 320) {
       return publishCast(response, notification.content.cast.hash)
     } else {
