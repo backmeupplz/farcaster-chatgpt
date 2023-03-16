@@ -49,6 +49,12 @@ export default async function (notification: Notification) {
     await SeenCastModel.create({
       hash: notification.content.cast.hash,
     })
+    if (
+      notification.content.cast.timestamp <
+      Date.now() - 1000 * 60 * 60 * 24
+    ) {
+      return
+    }
     // Get response
     const conversation = await ConversationModel.findOne({
       threadHash,
