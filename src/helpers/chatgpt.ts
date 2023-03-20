@@ -6,4 +6,5 @@ export default new ChatGPTAPI({
   completionParams: { model: 'gpt-4' },
   debug: true,
   maxModelTokens: 8100,
+  systemMessage: '',
 })
