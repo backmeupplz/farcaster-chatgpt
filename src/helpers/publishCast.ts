@@ -1,9 +1,13 @@
 import { MerkleAPIClient } from '@standard-crypto/farcaster-js'
-import wallet from './wallet'
+import { Wallet } from 'ethers'
 
-const client = new MerkleAPIClient(wallet)
-
-export default async function (text: string, replyToId: string) {
+export default async function (
+  text: string,
+  replyToId: string,
+  mnemonic: string
+) {
+  const wallet = Wallet.fromMnemonic(mnemonic)
+  const client = new MerkleAPIClient(wallet)
   const cast = await client.fetchCast(replyToId)
   console.log('Publishing cast', text, cast?.hash)
   const publishedCast = await client.publishCast(text, cast)

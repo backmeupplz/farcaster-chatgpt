@@ -8,7 +8,7 @@ function delay(s: number) {
   return new Promise((resolve) => setTimeout(resolve, s * 1000))
 }
 
-export default async function (notification: Notification) {
+export default async function (notification: Notification, mnemonic: string) {
   let castHash: string | undefined
   try {
     // Check if mention
@@ -104,11 +104,12 @@ export default async function (notification: Notification) {
 
     response = response.trim()
     if (response.length <= 320) {
-      return publishCast(response, notification.content.cast.hash)
+      return publishCast(response, notification.content.cast.hash, mnemonic)
     } else {
       return publishCast(
         'I tried 10 times to generate a reply under 320 characters but failed. So sorry, try again later!',
-        castHash
+        castHash,
+        mnemonic
       )
     }
   } catch (error) {
@@ -118,7 +119,8 @@ export default async function (notification: Notification) {
         `So sorry, I experienced an error, try again later: ${
           error instanceof Error ? error.message : error
         }`.substring(0, 320),
-        castHash
+        castHash,
+        mnemonic
       )
     }
   }

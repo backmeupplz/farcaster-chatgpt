@@ -11,7 +11,7 @@ export default async function () {
     const bearerToken = await getBearerTokenFromMnemonic(mnemonic)
     console.log('Got bearer token', bearerToken)
     startPolling(bearerToken.secret, (notification) =>
-      handleNotification(notification)
+      handleNotification(notification, mnemonic)
     )
   }
 }
