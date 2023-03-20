@@ -14,11 +14,10 @@ And you should be good to go! Feel free to fork and submit pull requests.
 
 ## Environment variables
 
-| Name                         | Description                           |
-| ---------------------------- | ------------------------------------- |
-| `MONGO`                      | URL of the mongo database             |
-| `FARCASTER_MNEMONIC_CHATGPT` | Mnemonic for the bot's account        |
-| `FARCASTER_MNEMONIC_GPT`     | Mnemonic for the bot's second account |
-| `OPEN_AI_API_KEY`            | OpenAI API key                        |
+| Name                 | Description                    |
+| -------------------- | ------------------------------ |
+| `MONGO`              | URL of the mongo database      |
+| `FARCASTER_MNEMONIC` | Mnemonic for the bot's account |
+| `OPEN_AI_API_KEY`    | OpenAI API key                 |
 
 Also, please, consider looking at `.env.sample`.

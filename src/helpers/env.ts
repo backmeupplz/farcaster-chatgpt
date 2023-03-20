@@ -9,7 +9,6 @@ dotenv.config({ path: resolve(cwd(), '.env') })
 export default cleanEnv(process.env, {
   MONGO: str(),
   PORT: num({ default: 1337 }),
-  FARCASTER_MNEMONIC_CHATGPT: str(),
-  FARCASTER_MNEMONIC_GPT: str(),
+  FARCASTER_MNEMONIC: str(),
   OPEN_AI_API_KEY: str(),
 })
