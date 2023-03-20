@@ -77,7 +77,7 @@ export default async function (notification: Notification, mnemonic: string) {
       }
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
-        `Try again but. Keep reply under 320 characters and without hashtags.`,
+        `Write a knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not use hashtags.`,
         {
           parentMessageId: conversation?.currentParentMessageId,
         }
