@@ -3,4 +3,7 @@ import env from './env'
 
 export default new ChatGPTAPI({
   apiKey: env.OPEN_AI_API_KEY,
+  completionParams: {
+    model: 'gpt-4',
+  },
 })

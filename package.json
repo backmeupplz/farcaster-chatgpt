@@ -16,19 +16,19 @@
   },
   "dependencies": {
     "@big-whale-labs/botcaster": "^0.0.17",
-    "@standard-crypto/farcaster-js": "^5.5.3",
-    "@typegoose/typegoose": "^10.3.0",
-    "chatgpt": "^5.0.8",
+    "@standard-crypto/farcaster-js": "^5.5.4",
+    "@typegoose/typegoose": "^10.3.3",
+    "chatgpt": "^5.1.2",
     "dotenv": "^16.0.3",
     "envalid": "^7.3.1",
-    "ethers": "^5.7.2",
-    "mongoose": "^7.0.1"
+    "ethers": "5.7.2",
+    "mongoose": "^7.0.2"
   },
   "devDependencies": {
-    "@types/node": "^18.14.6",
-    "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.54.1",
-    "eslint": "^8.35.0",
+    "@types/node": "^18.15.3",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
@@ -36,7 +36,7 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "prettier": "^2.8.4",
     "tsc-watch": "^6.0.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.2"
   },
   "packageManager": "yarn@3.3.1"
 }
