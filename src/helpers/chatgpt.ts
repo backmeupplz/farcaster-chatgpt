@@ -6,5 +6,6 @@ export default new ChatGPTAPI({
   completionParams: { model: 'gpt-4' },
   debug: true,
   maxModelTokens: 8100,
-  systemMessage: '',
+  systemMessage:
+    'You are GPT-4, a large language model trained by OpenAI. Answer as concisely as possible. Keep all the replies shorter than 320 characters. Do not use hashtags.',
 })

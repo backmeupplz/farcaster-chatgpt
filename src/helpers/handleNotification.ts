@@ -60,7 +60,7 @@ export default async function (notification: Notification, mnemonic: string) {
       threadHash,
     })
     let { text: response, id: messageId } = await chatgpt.sendMessage(
-      `Write a knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not use hashtags.`,
+      `Write a knowledgeable reply to the following message: "${notification.content.cast.text}"`,
       {
         parentMessageId: conversation?.currentParentMessageId,
       }
@@ -77,7 +77,7 @@ export default async function (notification: Notification, mnemonic: string) {
       }
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
-        `Write a knowledgeable reply to the following message: "${notification.content.cast.text}". Keep the reply shorter than 320 characters. Do not use hashtags.`,
+        `Write a knowledgeable reply to the following message: "${notification.content.cast.text}"`,
         {
           parentMessageId: conversation?.currentParentMessageId,
         }
