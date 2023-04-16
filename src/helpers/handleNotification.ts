@@ -1,6 +1,7 @@
 import { ConversationModel } from '../models/Conversation'
 import { Notification } from '@big-whale-labs/botcaster'
 import { SeenCastModel } from '../models/SeenCast'
+import bannedUsers from './bannedUsers'
 import chatgpt from './chatgpt'
 import publishCast from './publishCast'
 
@@ -20,6 +21,12 @@ export default async function (notification: Notification, mnemonic: string) {
     }
     // Check if it's a self-notification
     if (notification.actor?.username?.toLowerCase() === 'chatgpt') {
+      return
+    }
+    // Check if banned
+    if (
+      bannedUsers.includes(notification.actor?.username?.toLowerCase() || '')
+    ) {
       return
     }
     // Check if it has text
