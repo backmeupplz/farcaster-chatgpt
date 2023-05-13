@@ -122,6 +122,10 @@ export default async function (notification: Notification, mnemonic: string) {
   } catch (error) {
     console.log(error instanceof Error ? error.message : error)
     if (castHash) {
+      const errorMessage = error instanceof Error ? error.message : error
+      if (`${errorMessage}`.includes('127.0.0.1:27017')) {
+        return
+      }
       return publishCast(
         `So sorry, I experienced an error, try again later: ${
           error instanceof Error ? error.message : error
