@@ -545,14 +545,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@standard-crypto/farcaster-js@npm:^5.5.4":
-  version: 5.5.4
-  resolution: "@standard-crypto/farcaster-js@npm:5.5.4"
+"@standard-crypto/farcaster-js@npm:5.7.0":
+  version: 5.7.0
+  resolution: "@standard-crypto/farcaster-js@npm:5.7.0"
   dependencies:
-    axios: ~1.3.4
-    canonicalize: ^1.0.8
+    axios: ~1.4.0
+    canonicalize: ^2.0.0
     ethers: ^5.7.1
-  checksum: f150b2f8682c55399d8ec288c24ee4e015edc0b051da33ef469fcb70b25c468553173bf5d59de9eefde98973e918e43b5c64ba46911f602a8e1f4eb4863f66a1
+  checksum: 4dc55ba05cc1f31091c146f86b89d2df738a66a7c55fd76e4e21eb971cccb0065ea9f2746f1d54015b71908c43cf54c2aafba9e8d8403430d16fe7b29ba63e4b
   languageName: node
   linkType: hard
 
@@ -925,14 +925,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:~1.3.4":
-  version: 1.3.4
-  resolution: "axios@npm:1.3.4"
+"axios@npm:~1.4.0":
+  version: 1.4.0
+  resolution: "axios@npm:1.4.0"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: 7440edefcf8498bc3cdf39de00443e8101f249972c83b739c6e880d9d669fea9486372dbe8739e88b3bf8bb1ad15f6106693f206f078f4516fe8fd47b1c3093c
+  checksum: 7fb6a4313bae7f45e89d62c70a800913c303df653f19eafec88e56cea2e3821066b8409bc68be1930ecca80e861c52aa787659df0ffec6ad4d451c7816b9386b
   languageName: node
   linkType: hard
 
@@ -1021,10 +1021,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"canonicalize@npm:^1.0.8":
-  version: 1.0.8
-  resolution: "canonicalize@npm:1.0.8"
-  checksum: c31ea64160171bbcd7ac0dc081058fbcff055410a1d532d7b3959e7b02a3001c5d5f4f8bad934ed5246eafc9a928d333cc0c29846c16fb6d0be97b8fb444de3c
+"canonicalize@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "canonicalize@npm:2.0.0"
+  checksum: 541dee6e53c06e81b11241eba76197b6837b3e2a5951a175f57d75eb4c59599ec68566ee88aa2fb3dac6e6ca57d674ca3c0d9c75a855176ce78f0555b26caf39
   languageName: node
   linkType: hard
 
@@ -1741,7 +1741,7 @@ __metadata:
   resolution: "farcaster-chatgpt@workspace:."
   dependencies:
     "@big-whale-labs/botcaster": ^0.0.17
-    "@standard-crypto/farcaster-js": ^5.5.4
+    "@standard-crypto/farcaster-js": 5.7.0
     "@typegoose/typegoose": ^10.3.3
     "@types/node": ^18.15.3
     "@typescript-eslint/eslint-plugin": ^5.55.0
