@@ -1,63 +1,45 @@
 import { ConversationModel } from '../models/Conversation'
-import { Notification } from '@big-whale-labs/botcaster'
+import { CastWithInteractions } from '../../node_modules/@standard-crypto/farcaster-js-neynar/dist/commonjs/v1/openapi/generated/models/cast-with-interactions'
 import { SeenCastModel } from '../models/SeenCast'
 import bannedUsers from './bannedUsers'
 import chatgpt from './chatgpt'
 import publishCast from './publishCast'
+import env from './env'
 
 function delay(s: number) {
   return new Promise((resolve) => setTimeout(resolve, s * 1000))
 }
 
-export default async function (notification: Notification, mnemonic: string) {
+export default async function (notification: CastWithInteractions) {
   let castHash: string | undefined
   try {
-    // Check if mention
+    // Check if valid
     if (
       notification.type !== 'cast-mention' &&
-      notification.type !== 'cast-reply'
+      notification.type !== 'cast-reply' &&
+      +notification.author.fid !== env.FID &&
+      !bannedUsers.includes(+notification.author.fid) &&
+      !!notification.text &&
+      !!notification.hash
     ) {
+      console.log('Cannot process notification', notification)
       return
     }
-    // Check if it's a self-notification
-    if (notification.actor?.username?.toLowerCase() === 'chatgpt') {
-      return
-    }
-    // Check if banned
-    if (
-      bannedUsers.includes(notification.actor?.username?.toLowerCase() || '')
-    ) {
-      return
-    }
-    // Check if it has text
-    const mentionText = notification.content.cast?.text
-    if (!mentionText) {
-      return
-    }
-    // Check if it has a hash
-    if (!notification.content.cast?.hash) {
-      return
-    }
-    castHash = notification.content.cast.hash
-    // Check if there is an actor
-    if (!notification.actor) {
-      return
-    }
+    castHash = notification.hash
     // Get thread hash
-    const threadHash =
-      notification.content.cast?.threadHash || notification.content.cast.hash
+    const threadHash = notification.threadHash || notification.hash
     // Check if we've seen this notification
     const dbCast = await SeenCastModel.findOne({
-      hash: notification.content.cast.hash,
+      hash: notification.hash,
     })
     if (dbCast) {
       return
     }
     await SeenCastModel.create({
-      hash: notification.content.cast.hash,
+      hash: notification.hash,
     })
     if (
-      notification.content.cast.timestamp <
+      new Date(notification.timestamp).getTime() <
       Date.now() - 1000 * 60 * 60 * 24
     ) {
       return
@@ -67,7 +49,7 @@ export default async function (notification: Notification, mnemonic: string) {
       threadHash,
     })
     let { text: response, id: messageId } = await chatgpt.sendMessage(
-      `Write a knowledgeable reply to the following message: "${notification.content.cast.text}"`,
+      `Write a knowledgeable reply to the following message: "${notification.text}"`,
       {
         parentMessageId: conversation?.currentParentMessageId,
       }
@@ -77,14 +59,12 @@ export default async function (notification: Notification, mnemonic: string) {
       if (numberOfTries > 0) {
         console.log('======')
         console.log(response.length, response)
-        console.log(
-          `Try #${numberOfTries + 1} for "${notification.content.cast.text}"`
-        )
+        console.log(`Try #${numberOfTries + 1} for "${notification.text}"`)
         await delay(15)
       }
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
-        `Write a knowledgeable reply to the following message: "${notification.content.cast.text}"`,
+        `Write a knowledgeable reply to the following message: "${notification.text}"`,
         {
           parentMessageId: conversation?.currentParentMessageId,
         }
@@ -106,17 +86,16 @@ export default async function (notification: Notification, mnemonic: string) {
     )
     console.log('======')
     console.log('threadHash', threadHash)
-    console.log(notification.content.cast.text)
+    console.log(notification.text)
     console.log(response.length, response)
 
     response = response.trim()
     if (response.length <= 320) {
-      return publishCast(response, notification.content.cast.hash, mnemonic)
+      return publishCast(response, notification.hash)
     } else {
       return publishCast(
         'I tried 10 times to generate a reply under 320 characters but failed. So sorry, try again later!',
-        castHash,
-        mnemonic
+        castHash
       )
     }
   } catch (error) {
@@ -130,8 +109,7 @@ export default async function (notification: Notification, mnemonic: string) {
         `So sorry, I experienced an error, try again later: ${
           error instanceof Error ? error.message : error
         }`.substring(0, 320),
-        castHash,
-        mnemonic
+        castHash
       )
     }
   }

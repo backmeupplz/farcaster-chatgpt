@@ -1,1 +1,3 @@
-export default ['mimichan']
+export default [
+  12115, // mimichan
+]
