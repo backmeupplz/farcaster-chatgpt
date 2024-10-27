@@ -11,7 +11,6 @@ function delay(s: number) {
 }
 
 export default async function (notification: Notification) {
-  console.log('Handling notification', notification)
   let castHash: string | undefined
   try {
     // Check if valid
@@ -24,7 +23,7 @@ export default async function (notification: Notification) {
         !!notification.cast.text &&
         !!notification.cast.hash)
     ) {
-      console.log('Cannot process notification', notification)
+      console.log('Cannot process notification', notification.type)
       return
     }
     castHash = notification.cast.hash
