@@ -39,13 +39,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/botcaster@npm:^0.0.32":
-  version: 0.0.32
-  resolution: "@big-whale-labs/botcaster@npm:0.0.32"
+"@big-whale-labs/botcaster@npm:^0.0.33":
+  version: 0.0.33
+  resolution: "@big-whale-labs/botcaster@npm:0.0.33"
   dependencies:
     "@neynar/nodejs-sdk": ^1.66.0
     node-persist: ^4.0.3
-  checksum: 6f7d2c66ec9d895569270505bca64de8aa4029fe62b9c68a5296362c6d8174b649393364cc91f36f74e4db4bb692bdcf4eb1e18a6e6c21ff608d165f0e2f3da7
+  checksum: d00c0017f0fcffb7864e21f8ec009711d9d5a26540528830e05f8ad4365ad0aa827c2d3fabd477a48a3c2188d989bc097434257906bf5837965cbce56358853a
   languageName: node
   linkType: hard
 
@@ -1763,7 +1763,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "farcaster-chatgpt@workspace:."
   dependencies:
-    "@big-whale-labs/botcaster": ^0.0.32
+    "@big-whale-labs/botcaster": ^0.0.33
     "@typegoose/typegoose": ^12.5.0
     "@types/node": ^20.14.2
     "@typescript-eslint/eslint-plugin": ^7.12.0

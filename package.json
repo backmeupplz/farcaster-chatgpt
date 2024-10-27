@@ -15,7 +15,7 @@
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
   },
   "dependencies": {
-    "@big-whale-labs/botcaster": "^0.0.32",
+    "@big-whale-labs/botcaster": "^0.0.33",
     "@typegoose/typegoose": "^12.5.0",
     "chatgpt": "^5.2.5",
     "dotenv": "^16.4.5",

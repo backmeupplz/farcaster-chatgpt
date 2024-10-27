@@ -1,5 +1,5 @@
-import env from './env'
-import neynar from './neynar'
+import env from './env.js'
+import neynar from './neynar.js'
 
 export default async function (text: string, replyTo: string) {
   console.log('Publishing cast', text)

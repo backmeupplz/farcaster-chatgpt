@@ -1,5 +1,5 @@
-import runMongo from './helpers/mongo'
-import startPolling from './helpers/startPolling'
+import runMongo from './helpers/mongo.js'
+import startPolling from './helpers/startPolling.js'
 
 void (async () => {
   console.log('Starting mongo')

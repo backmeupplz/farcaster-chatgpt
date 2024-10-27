@@ -1,46 +1,47 @@
-import { ConversationModel } from '../models/Conversation'
-import { SeenCastModel } from '../models/SeenCast'
-import bannedUsers from './bannedUsers'
-import chatgpt from './chatgpt'
-import publishCast from './publishCast'
-import env from './env'
-import { CastWithInteractions } from '@neynar/nodejs-sdk/build/neynar-api/v1'
+import { ConversationModel } from '../models/Conversation.js'
+import { SeenCastModel } from '../models/SeenCast.js'
+import bannedUsers from './bannedUsers.js'
+import chatgpt from './chatgpt.js'
+import publishCast from './publishCast.js'
+import env from './env.js'
+import { Notification } from '@neynar/nodejs-sdk/build/neynar-api/v2'
 
 function delay(s: number) {
   return new Promise((resolve) => setTimeout(resolve, s * 1000))
 }
 
-export default async function (notification: CastWithInteractions) {
+export default async function (notification: Notification) {
   console.log('Handling notification', notification)
   let castHash: string | undefined
   try {
     // Check if valid
     if (
-      notification.type !== 'cast-mention' &&
-      notification.type !== 'cast-reply' &&
-      +notification.author.fid !== env.FID &&
-      !bannedUsers.includes(+notification.author.fid) &&
-      !!notification.text &&
-      !!notification.hash
+      !notification.cast ||
+      (notification.cast.type !== 'cast-mention' &&
+        notification.cast.type !== 'cast-reply' &&
+        +notification.cast.author.fid !== env.FID &&
+        !bannedUsers.includes(+notification.cast.author.fid) &&
+        !!notification.cast.text &&
+        !!notification.cast.hash)
     ) {
       console.log('Cannot process notification', notification)
       return
     }
-    castHash = notification.hash
+    castHash = notification.cast.hash
     // Get thread hash
-    const threadHash = notification.threadHash || notification.hash
+    const threadHash = notification.cast.thread_hash || notification.cast.hash
     // Check if we've seen this notification
     const dbCast = await SeenCastModel.findOne({
-      hash: notification.hash,
+      hash: notification.cast.hash,
     })
     if (dbCast) {
       return
     }
     await SeenCastModel.create({
-      hash: notification.hash,
+      hash: notification.cast.hash,
     })
     if (
-      new Date(notification.timestamp).getTime() <
+      new Date(notification.cast.timestamp).getTime() <
       Date.now() - 1000 * 60 * 60 * 24
     ) {
       return
@@ -50,7 +51,7 @@ export default async function (notification: CastWithInteractions) {
       threadHash,
     })
     let { text: response, id: messageId } = await chatgpt.sendMessage(
-      `Write a knowledgeable reply to the following message: "${notification.text}"`,
+      `Write a knowledgeable reply to the following message: "${notification.cast.text}"`,
       {
         parentMessageId: conversation?.currentParentMessageId,
       }
@@ -60,12 +61,12 @@ export default async function (notification: CastWithInteractions) {
       if (numberOfTries > 0) {
         console.log('======')
         console.log(response.length, response)
-        console.log(`Try #${numberOfTries + 1} for "${notification.text}"`)
+        console.log(`Try #${numberOfTries + 1} for "${notification.cast.text}"`)
         await delay(15)
       }
       numberOfTries++
       const newResponse = await chatgpt.sendMessage(
-        `Write a knowledgeable reply to the following message: "${notification.text}"`,
+        `Write a knowledgeable reply to the following message: "${notification.cast.text}"`,
         {
           parentMessageId: conversation?.currentParentMessageId,
         }
@@ -87,12 +88,12 @@ export default async function (notification: CastWithInteractions) {
     )
     console.log('======')
     console.log('threadHash', threadHash)
-    console.log(notification.text)
+    console.log(notification.cast.text)
     console.log(response.length, response)
 
     response = response.trim()
     if (response.length <= 320) {
-      return publishCast(response, notification.hash)
+      return publishCast(response, notification.cast.hash)
     } else {
       return publishCast(
         'I tried 10 times to generate a reply under 1024 characters but failed. So sorry, try again later!',
