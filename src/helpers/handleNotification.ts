@@ -92,7 +92,7 @@ export default async function (notification: Notification) {
     console.log(response.length, response)
 
     response = response.trim()
-    if (response.length <= 320) {
+    if (response.length <= 1024) {
       return publishCast(response, notification.cast.hash)
     } else {
       return publishCast(
