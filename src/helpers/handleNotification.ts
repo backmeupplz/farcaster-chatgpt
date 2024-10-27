@@ -57,7 +57,7 @@ export default async function (notification: Notification) {
       }
     )
     let numberOfTries = 0
-    while ((!response || response.length > 320) && numberOfTries < 10) {
+    while ((!response || response.length > 1024) && numberOfTries < 10) {
       if (numberOfTries > 0) {
         console.log('======')
         console.log(response.length, response)
@@ -110,7 +110,7 @@ export default async function (notification: Notification) {
       return publishCast(
         `So sorry, I experienced an error, try again later: ${
           error instanceof Error ? error.message : error
-        }`.substring(0, 320),
+        }`.substring(0, 1024),
         castHash
       )
     }
