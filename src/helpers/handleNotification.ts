@@ -1,10 +1,10 @@
 import { ConversationModel } from '../models/Conversation'
-import { CastWithInteractions } from '../../node_modules/@standard-crypto/farcaster-js-neynar/dist/commonjs/v1/openapi/generated/models/cast-with-interactions'
 import { SeenCastModel } from '../models/SeenCast'
 import bannedUsers from './bannedUsers'
 import chatgpt from './chatgpt'
 import publishCast from './publishCast'
 import env from './env'
+import { CastWithInteractions } from '@neynar/nodejs-sdk/build/neynar-api/v1'
 
 function delay(s: number) {
   return new Promise((resolve) => setTimeout(resolve, s * 1000))
