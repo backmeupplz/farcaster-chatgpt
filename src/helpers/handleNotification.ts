@@ -11,6 +11,7 @@ function delay(s: number) {
 }
 
 export default async function (notification: CastWithInteractions) {
+  console.log('Handling notification', notification)
   let castHash: string | undefined
   try {
     // Check if valid

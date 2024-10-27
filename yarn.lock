@@ -39,14 +39,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/botcaster@npm:^0.0.28":
-  version: 0.0.28
-  resolution: "@big-whale-labs/botcaster@npm:0.0.28"
+"@big-whale-labs/botcaster@npm:^0.0.29":
+  version: 0.0.29
+  resolution: "@big-whale-labs/botcaster@npm:0.0.29"
   dependencies:
-    "@standard-crypto/farcaster-js": ^7.1.1
-    axios: ^1.6.7
-    node-persist: ^4.0.1
-  checksum: 2c2ae836915be867492100c58e24ae73609b7fdeb3b4127495bc517161ae10bb7e91178285af6d597cdfdb36cae6f112457df05eccfe24526b8e62846890baa2
+    "@standard-crypto/farcaster-js": ^7.4.0
+    axios: ^1.7.7
+    node-persist: ^4.0.3
+  checksum: 927bea40a4d1cb9b58ec091c49ef45d900a3577b091980a2f224b9a7b52517974e989b8a45bd35e85bdc57a3b5cfc781026335b9beb9541909851c75968b4d34
   languageName: node
   linkType: hard
 
@@ -319,7 +319,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@standard-crypto/farcaster-js@npm:^7.1.1, @standard-crypto/farcaster-js@npm:^7.4.0":
+"@standard-crypto/farcaster-js@npm:^7.4.0":
   version: 7.4.0
   resolution: "@standard-crypto/farcaster-js@npm:7.4.0"
   dependencies:
@@ -762,14 +762,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.6.7":
-  version: 1.7.2
-  resolution: "axios@npm:1.7.2"
+"axios@npm:^1.7.7":
+  version: 1.7.7
+  resolution: "axios@npm:1.7.7"
   dependencies:
     follow-redirects: ^1.15.6
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: e457e2b0ab748504621f6fa6609074ac08c824bf0881592209dfa15098ece7e88495300e02cd22ba50b3468fd712fe687e629dcb03d6a3f6a51989727405aedf
+  checksum: 882d4fe0ec694a07c7f5c1f68205eb6dc5a62aecdb632cc7a4a3d0985188ce3030e0b277e1a8260ac3f194d314ae342117660a151fabffdc5081ca0b5a8b47fe
   languageName: node
   linkType: hard
 
@@ -1781,7 +1781,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "farcaster-chatgpt@workspace:."
   dependencies:
-    "@big-whale-labs/botcaster": ^0.0.28
+    "@big-whale-labs/botcaster": ^0.0.29
     "@standard-crypto/farcaster-js": ^7.4.0
     "@typegoose/typegoose": ^12.5.0
     "@types/node": ^20.14.2
@@ -3000,10 +3000,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-persist@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "node-persist@npm:4.0.1"
-  checksum: 4d0fe3e125660ac2fd36310373232b47bfcba2de00222d943033b4c2a49220db4bac06f73f965b10f39b569b7c2919c1ff05cf36184acddf72d67cf05a17402d
+"node-persist@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "node-persist@npm:4.0.3"
+  checksum: e42f75989d31763c376659a4d9f681d55b156cd417a7bc5d0c75bdda625d8f085198aa81f4921dd9c782457daf1fe81f35c412fb00a430178cf18f451c9bf250
   languageName: node
   linkType: hard
 
