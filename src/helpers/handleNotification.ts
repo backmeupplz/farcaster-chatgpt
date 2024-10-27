@@ -16,8 +16,8 @@ export default async function (notification: Notification) {
     // Check if valid
     if (
       !notification.cast ||
-      (notification.cast.type !== 'cast-mention' &&
-        notification.cast.type !== 'cast-reply' &&
+      (notification.type !== 'mention' &&
+        notification.type !== 'reply' &&
         +notification.cast.author.fid !== env.FID &&
         !bannedUsers.includes(+notification.cast.author.fid) &&
         !!notification.cast.text &&
@@ -43,6 +43,7 @@ export default async function (notification: Notification) {
       new Date(notification.cast.timestamp).getTime() <
       Date.now() - 1000 * 60 * 60 * 24
     ) {
+      console.log('Old cast, skipping,', notification.type)
       return
     }
     // Get response
