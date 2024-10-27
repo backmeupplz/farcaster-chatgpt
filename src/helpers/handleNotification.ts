@@ -94,7 +94,7 @@ export default async function (notification: CastWithInteractions) {
       return publishCast(response, notification.hash)
     } else {
       return publishCast(
-        'I tried 10 times to generate a reply under 320 characters but failed. So sorry, try again later!',
+        'I tried 10 times to generate a reply under 1024 characters but failed. So sorry, try again later!',
         castHash
       )
     }
